@@ -1,7 +1,10 @@
 This project is an initial part of a project in the style of the "waze" application or maybe pokemon game?.
+
 With the help of this project you will be able to represent unweighted graphs with the help of nodes and weights more efficiently.
 You can also initialize graphs you have built from a file and initialize them from an existing file. Object type.
-And you can also get algorithmic information about your graph even if it is very large such as Is it a link?, What is the shortest distance between two points? And through these nodes passes this route.
+
+And you can also get algorithmic information about your graph even if it is very large such as Is it a link?, What is the shortest distance between two points? And through these nodes passes this routhe.
+
 Among other things, you can find an implementation in java of the Dykstra algorithm
 In stage 1 , we characterize 3 interfaces that represent a node-info, a weghted graph with weighted edges  weghited  graph algorithems  
  and a graph of algorithms, and two classes that implement the specified interfaces, respectively  the class WGraphDS its for two interfaces(node it inner class that interfare node-info) 	
