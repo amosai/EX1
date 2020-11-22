@@ -2,6 +2,9 @@ package ex1.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 import org.junit.jupiter.api.Test;
 
 import ex1.src.WGraph_DS;
@@ -23,10 +26,10 @@ class WGraph_DSTest {
 		g.addNode(0);
 		 try {
 			 	 node_info i= g.getNode(0);
-			 	System.out.println(i.getKey()); 
+			 
 			 	assertEquals(0, i.getKey());
 			} catch (Exception e) {
-				System.out.println();
+				
 			}
 	
 		
@@ -51,8 +54,7 @@ class WGraph_DSTest {
 		assertFalse(a.hasEdge(3, 1));
 		assertFalse(a.hasEdge(1, 3));//
 		assertFalse(a.hasEdge(1, 4));//4 not in graph
-		//System.out.println(a.hasEdge(4, 1));
-		//System.out.println("e");
+		
 	}
 
 	@Test
@@ -88,7 +90,7 @@ class WGraph_DSTest {
 		a.connect(1, 2, 12.7);
 		a.connect(1, 2, 12.7);
 		assertEquals(2, a.nodeSize());
-		System.out.println(a.getEdge(1, 2));
+		
 		a.connect(1, 2, 12.7);
 		assertEquals(2, a.nodeSize());
 		a.removeNode(1);
@@ -97,37 +99,122 @@ class WGraph_DSTest {
 
 	@Test
 	void testGetV() {
-		fail("Not yet implemented");
+		  weighted_graph g = new WGraph_DS();
+	        g.addNode(0);
+	        g.addNode(1);
+	        g.addNode(2);
+	        g.addNode(3);
+	        g.connect(0,1,1);
+	        g.connect(0,2,2);
+	        g.connect(0,3,3);
+	        g.connect(0,1,1);
+	        Collection<node_info> v = g.getV();
+	        Iterator<node_info> iter = v.iterator();
+	        while (iter.hasNext()) {
+	            node_info n = iter.next();
+	            assertNotNull(n);
+	        }
 	}
 
 	@Test
 	void testGetVInt() {
-		fail("Not yet implemented");
+		weighted_graph g = new WGraph_DS();
+        g.addNode(0);
+        g.addNode(1);
+        g.addNode(2);
+        g.addNode(3);
+        g.connect(0,1,1);
+        g.connect(0,2,2);
+        g.connect(0,3,3);
+        g.connect(0,1,1);
+        Collection<node_info> v = g.getV(0);
+        Iterator<node_info> iter = v.iterator();
+        while (iter.hasNext()) {
+            node_info n = iter.next();
+            assertNotNull(n);
+        }
 	}
 
 	@Test
 	void testRemoveNode() {
-		fail("Not yet implemented");
+		 weighted_graph g = new WGraph_DS();
+	        g.addNode(0);
+	        g.addNode(1);
+	        g.addNode(2);
+	        g.addNode(3);
+	        g.connect(0,1,1);
+	        g.connect(0,2,2);
+	        g.connect(0,3,3);
+	    
+	        g.removeNode(4);
+	       
+	      
+	        g.removeNode(0);
+	        
+	        assertFalse(g.hasEdge(1,0));
+	        int e = g.edgeSize();
+	        
+	        assertEquals(0,e);
+	       
+	        assertEquals(3,g.nodeSize());
+	        
 	}
 
 	@Test
 	void testRemoveEdge() {
-		fail("Not yet implemented");
+		 weighted_graph g = new WGraph_DS();
+	        g.addNode(0);
+	        g.addNode(1);
+	        g.addNode(2);
+	        g.addNode(3);
+	        g.connect(0,1,1);
+	        g.connect(0,2,2);
+	        g.connect(0,3,3);
+	        g.removeEdge(0,3);
+	        double w = g.getEdge(0,3);
+	        assertEquals(w,-1);
 	}
 
 	@Test
 	void testNodeSize() {
-		fail("Not yet implemented");
+		 weighted_graph g = new WGraph_DS();
+		g.addNode(0);
+        g.addNode(1);
+        g.addNode(2);
+        g.addNode(0);
+        g.connect(0,1,1);
+        assertEquals(3, g.nodeSize());
 	}
 
 	@Test
 	void testEdgeSize() {
-		//fail("Not yet implemented");
+		 weighted_graph g = new WGraph_DS();
+		g.addNode(0);
+        g.addNode(1);
+        g.addNode(2);
+        g.addNode(0);
+        g.connect(0,1,1);
+        assertEquals(1, g.edgeSize());
+	 g.connect(0,1,5);
+    g.connect(0,2,2);
+    g.connect(0,3,3);
+    g.removeEdge(0,3);
+    assertEquals(2, g.edgeSize());
 	}
 
 	@Test
 	void testGetMC() {
-		//fail("Not yet implemented");
+		weighted_graph g = new WGraph_DS();
+		   g.addNode(0);
+	        g.addNode(1);
+	        g.addNode(2);
+	        g.addNode(3);
+	        g.connect(0,1,1);
+	        g.connect(0,2,2);
+	        g.connect(0,3,3);
+	        g.removeEdge(0,3);
+	        assertEquals(8, g.getMC());
+	        
 	}
 
 }
